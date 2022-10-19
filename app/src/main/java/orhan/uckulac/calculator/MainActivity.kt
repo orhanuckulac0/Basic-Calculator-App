@@ -30,13 +30,13 @@ class MainActivity : AppCompatActivity() {
         lastDot = false
     }
 
-    fun onClear(view: View){
+    fun onClear(){
         tvInput?.text = ""
         lastNumeric = false
         lastDot = false
     }
 
-    fun onDecimalPoint(view: View){
+    fun onDecimalPoint(){
         if (lastNumeric && !lastDot)
             tvInput?.append(".")
             lastNumeric = false
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun onEqual(view: View){
+    fun onEqual(){
         if (lastNumeric){
             var tvValue = tvInput?.text.toString()
             var prefix = ""
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                     val splitValue = tvValue.split('-')
 
                     var one = splitValue[0]
-                    var two = splitValue[1]
+                    val two = splitValue[1]
 
                     if (prefix.isNotEmpty()){
                         one = prefix + one
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                     val splitValue = tvValue.split('+')
 
                     var one = splitValue[0]
-                    var two = splitValue[1]
+                    val two = splitValue[1]
 
                     if (prefix.isNotEmpty()){
                         one = prefix + one
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                     val splitValue = tvValue.split('/')
 
                     var one = splitValue[0]
-                    var two = splitValue[1]
+                    val two = splitValue[1]
 
                     if (prefix.isNotEmpty()){
                         one = prefix + one
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                     val splitValue = tvValue.split('*')
 
                     var one = splitValue[0]
-                    var two = splitValue[1]
+                    val two = splitValue[1]
 
                     if (prefix.isNotEmpty()) {
                         one = prefix + one
