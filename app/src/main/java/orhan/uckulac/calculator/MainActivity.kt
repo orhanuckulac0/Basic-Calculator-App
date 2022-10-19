@@ -30,23 +30,25 @@ class MainActivity : AppCompatActivity() {
         lastDot = false
     }
 
-    fun onClear(){
+    fun onClear(view: View){
         tvInput?.text = ""
         lastNumeric = false
         lastDot = false
     }
 
-    fun onDecimalPoint(){
-        if (lastNumeric && !lastDot)
+    fun onDecimalPoint(view: View){
+        if (lastNumeric && !lastDot) {
             tvInput?.append(".")
             lastNumeric = false
             lastDot = true
+        }
     }
 
     fun onOperator(view: View){
         // does tvInput.text exists, then execute
         tvInput?.text?.let {
-             if (lastNumeric && !isOperatorAdded(it.toString())){
+             // check to see if last entered is numeric and operator is not added
+            if (lastNumeric && !isOperatorAdded(it.toString())){
                  tvInput?.append((view as Button).text)
                  lastNumeric = false
                  lastDot = false
@@ -55,24 +57,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    fun onEqual(){
+    fun onEqual(view: View){
         if (lastNumeric){
             var tvValue = tvInput?.text.toString()
+            println(tvValue)
             var prefix = ""
             try{
+                // if textview value starts with - , then it must be a negative number
                 if (tvValue.startsWith("-")){
                     prefix = "-"
+                    println(tvValue)
                     tvValue = tvValue.substring(1)
+                    println(tvValue)
                 }
 
                 // subtraction
+                //
                 if (tvValue.contains("-")){
                     val splitValue = tvValue.split('-')
 
                     var one = splitValue[0]
                     val two = splitValue[1]
 
+                    // if prefix is not empty, if the number is a negative number
+                    // assign - to the first num
                     if (prefix.isNotEmpty()){
                         one = prefix + one
                     }
