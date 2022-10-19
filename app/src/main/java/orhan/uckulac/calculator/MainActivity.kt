@@ -37,10 +37,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onDecimalPoint(){
-        if (lastNumeric && !lastDot)
+        if (lastNumeric && !lastDot) {
             tvInput?.append(".")
             lastNumeric = false
             lastDot = true
+        }
     }
 
     fun onOperator(view: View){
